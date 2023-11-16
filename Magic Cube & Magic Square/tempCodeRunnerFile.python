@@ -1,0 +1,43 @@
+def generate_magic_cube(order):
+    if order % 2 == 0:
+        print("Only odd-order magic cubes are supported.")
+        return []
+
+    cube = [[[0 for _ in range(order)] for _ in range(order)] for _ in range(order)]
+
+    l, r, c = 0, order // 2, order // 2
+
+    for num in range(1, order**3 + 1):
+        cube[l][r][c] = num
+
+        l = (l - 1 + order) % order
+        c = (c - 1 + order) % order
+
+        if cube[l][r][c] != 0:
+            l = (l - 1 + order) % order
+            r = (r - 1 + order) % order
+
+        if cube[l][r][c] != 0:
+            l = (l + 2) % order
+
+    return cube
+
+print("Magic Cube!!!")
+while True:
+    inp = input("Da valor de n, para hacer el cubo mágico n x n x n: ")
+    try:
+        n = int(inp)
+    except ValueError:
+        print("da numero igual o mayor a 3.")
+        continue
+    if n >= 3:
+        break
+    else:
+        print("da numero igual o mayor a 3.")
+        
+cubo = generate_magic_cube(n)
+
+for layer in cubo:
+    for row in layer:
+        print(row)
+    print()
