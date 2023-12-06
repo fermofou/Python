@@ -1,0 +1,2 @@
+# Memory Card Game
+First game I made, this allows 2 users to play each other in the python terminal. This is simple memory game, you guess the position of the pairs of numbers, and if found, the player gains a point.
